@@ -19,6 +19,8 @@ socket.on("chatting", (data)=>{
     const li = document.createElement("li");
     li.innerText = `${data.name}님이 - ${data.msg}`;
     chatList.appendChild(li);
+    chatInput.value="";
+    chatInput.focus();
 })
 
 
