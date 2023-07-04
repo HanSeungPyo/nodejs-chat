@@ -16,12 +16,28 @@ sendButton.addEventListener("click", ()=>{
 });
 
 socket.on("chatting", (data)=>{
-    const li = document.createElement("li");
-    li.innerText = `${data.name}님이 - ${data.msg}`;
-    chatList.appendChild(li);
-    chatInput.value="";
-    chatInput.focus();
+    const {name, msg, time} = data;
+    const item = new LiModel(name, msg, time);
+    item.makeLi();
 })
 
+function LiModel(name, msg, time){
+    this.name = name;
+    this.msg = msg;
+    this.time = time;
 
-console.log(socket);
+    this.makeLi = ()=>{
+        const li = document.createElement("li");
+        li.classList.add(nickname.value===this.name ? "sent" : "received");
+        const dom =`<li>
+                        <span class="profile">
+                            <span class="user">${this.name}</span>
+                            <img src="https://picsum.photos/50/50"/>
+                        </span>
+                        <span class="message">${this.msg}</span>
+                        <span class="time">${this.time}</span>
+                    </li>`;
+        li.innerHTML = dom;
+        chatList.appendChild(li);
+    }
+}
