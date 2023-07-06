@@ -8,13 +8,18 @@ const chatInput = document.querySelector(".chatting-input");
 const sendButton = document.querySelector(".send-button");
 const displayContainer = document.querySelector(".display-container");
 
-sendButton.addEventListener("click", ()=>{
+
+const send = () =>{
     const param = {
         name: nickName.value,
         msg: chatInput.value
     }
     socket.emit("chatting", param);
-});
+    chatInput.value ="";
+    chatInput.focus();
+}
+
+sendButton.addEventListener("click", send);
 
 socket.on("chatting", (data)=>{
     const {name, msg, time} = data;
