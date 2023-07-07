@@ -19,6 +19,12 @@ const send = () =>{
     chatInput.focus();
 }
 
+chatInput.addEventListener("keypress", (event)=>{
+    if(event.keyCode === 13){
+        send();
+    }
+});
+
 sendButton.addEventListener("click", send);
 
 socket.on("chatting", (data)=>{
