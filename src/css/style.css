@@ -63,6 +63,13 @@ html, body {
     border: none;
 }
 
+#emoji_btn {
+    flex: 1;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
 .send-button {
     flex: 1;
     background: #ffeb33;
@@ -70,6 +77,7 @@ html, body {
     height: 100%;
     border-radius: 3px;
 }
+
 
 .chatting-list li {
     width: 90%;
@@ -124,3 +132,4 @@ html, body {
 .received .message {
     background: #fff;
 }
+
