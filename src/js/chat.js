@@ -42,12 +42,11 @@ function LiModel(name, msg, time){
     this.makeLi = ()=>{
         const li = document.createElement("li");
         li.classList.add(nickname.value===this.name ? "sent" : "received");
-
-        console.log(li.classList.value);
+        const profileHTML = li.classList.value!="sent" ? "<img src='https://picsum.photos/50/50'/>" : "";
         const dom =`<li>
                         <span class="profile">
                             <span class="user">${this.name}</span>
-                            ${li.classList.value!="sent" ? "<img src='https://picsum.photos/50/50'/>" : ""}
+                            ${profileHTML}
                         </span>
                         <span class="message">${this.msg}</span>
                         <span class="time">${this.time}</span>
